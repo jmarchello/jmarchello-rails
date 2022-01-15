@@ -1,5 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "New Post", new_admin_post_path %>
+  </div>
+<% end %>
+
 <h1>Posts</h1>
 
 <div id="posts">
