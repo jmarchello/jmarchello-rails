@@ -4,7 +4,7 @@
   <% @posts.each do |post| %>
     <%= link_to post.title, post %>
     <small>
-    <% if post.published_at.blank? %>
+    <% if !post.published? %>
       <b>(draft)</b>
     <% end %>
     <% if user_signed_in? %>

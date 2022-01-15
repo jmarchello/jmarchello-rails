@@ -1,3 +1,13 @@
 <h2><%= @post.title %></h2>
 
 <%= @post.content %>
+
+<% if @post.published? %>
+  <br/>
+  <small>published <%= @post.published_at.strftime("%e %b %Y") %>
+<% end %>
+
+<% if @post.hn_url.present? %>
+  <br/>
+  <a href="<%= @post.hn_url %>" target="_blank">Comment on Hacker News</a>
+<% end %>
