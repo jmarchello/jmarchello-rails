@@ -6,11 +6,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>Josh Marchello</h1>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= link_to "Other Posts", posts_path %>
+
+      <% if user_signed_in? %>
+       | <%= link_to "New Post", new_admin_post_path %>
+      <% end %>
+
+      <hr/>
+      copyright Josh Marchello <%= Date.today.year %>
+    </footer>
   </body>
 </html>

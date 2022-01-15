@@ -1,17 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<% if user_signed_in? %>
-  <div>
-    <%= link_to "New Post", new_admin_post_path %>
-  </div>
-<% end %>
-
-<h1>Posts</h1>
-
 <div id="posts">
   <% @posts.each do |post| %>
-    <p>
-      <%= link_to post.title, post %>
-    </p>
+    <%= link_to post.title, post %>
+    <small>
+    <% if post.published_at.blank? %>
+      <b>(draft)</b>
+    <% end %>
+    <% if user_signed_in? %>
+      | <%= link_to "Edit", edit_admin_post_path(post) %>
+    <% end %>
+    </small>
+    <br>
   <% end %>
 </div>
