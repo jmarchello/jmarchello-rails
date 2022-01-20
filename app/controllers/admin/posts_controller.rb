@@ -15,7 +15,7 @@ class Admin::PostsController < Admin::BaseController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to admin_post_url(@post), notice: 'Post was successfully created.' }
+        format.html { redirect_to @post.permalink_path, notice: 'Post was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -26,7 +26,7 @@ class Admin::PostsController < Admin::BaseController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to admin_post_url(@post), notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post.permalink_path, notice: 'Post was successfully updated.' }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -51,6 +51,6 @@ class Admin::PostsController < Admin::BaseController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:content, :title, :published_at, :hn_url)
+    params.require(:post).permit(:content, :title, :published_at, :hn_url, :permalink)
   end
 end

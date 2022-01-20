@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   def published?
     published_at.present?
   end
+
+  def permalink_path
+    "/#{permalink}"
+  end
 end

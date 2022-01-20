@@ -2,7 +2,7 @@
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <%= link_to post.title, post %>
+    <%= link_to post.title, post.permalink_path %>
     <small>
     <% if !post.published? %>
       <b>(draft)</b>

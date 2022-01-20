@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :posts, only: %i[new edit update create destroy]
   end
 
-  resources :posts, only: %i[show index]
+  resources :posts, only: %i[index]
+  get ':permalink', to: 'posts#show'
 
   root to: 'posts#index'
 

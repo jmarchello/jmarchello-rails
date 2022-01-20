@@ -17,10 +17,10 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    @post = if user_signed_in?
+    @post = if user_signed_in? && params[:id].present?
               Post.find(params[:id])
             else
-              Post.published.find(params[:id])
+              Post.published.find_by_permalink(params[:permalink])
             end
   end
 end
